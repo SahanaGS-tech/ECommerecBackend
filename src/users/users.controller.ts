@@ -26,7 +26,7 @@ class UserController {
     @MongoQuery(Users)
     getUserByEmail(req: Request, res: Response, next: NextFunction) {
         logging.info('User Found');
-        return res.status(201).json(req.mongoQuery);
+        return res.status(200).json(req.mongoQuery);
     }
 }
 
