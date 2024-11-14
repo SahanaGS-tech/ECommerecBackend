@@ -1,3 +1,6 @@
+// Have Written the functions to handle different logging with the respective color codes.
+// And also declared globally to use accross the application.
+
 import { TEST } from './config';
 
 const colours = {

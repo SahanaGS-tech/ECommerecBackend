@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { Controller } from '../decorators/controller';
 import { Route } from '../decorators/route';
 
-@Controller()
+@Controller('/main')
 class MainController {
     @Route('get', '/healthcheck')
     getHealthCheck(req: Request, res: Response, next: NextFunction) {
