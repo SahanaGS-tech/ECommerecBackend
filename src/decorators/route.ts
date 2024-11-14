@@ -1,5 +1,5 @@
 import { Express, RequestHandler } from 'express';
-import { RouteHandler } from './routes';
+import { RouteHandler } from '../library/routes';
 
 export function Route(method: keyof Express, path: string = '', ...middleware: RequestHandler[]) {
     return (target: any, key: string, descriptor: PropertyDescriptor) => {

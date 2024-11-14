@@ -4,25 +4,38 @@ import './config/logging';
 import { loggingHandler } from './middleware/loggingHandler';
 import corsHandler from './middleware/corsHandler';
 import routeNotFound from './middleware/routeNotFound';
-import { SERVER } from './config/config';
+import { MONGO, SERVER } from './config/config';
 import 'reflect-metadata';
 import { defineRoutes } from './modules/routes';
 import MainController from './controllers/mainController';
+import mongoose from 'mongoose';
+import UserController from './users/users.controller';
+import { declareHandler } from './middleware/declareHandler';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
 
-export const Main = () => {
+export const Main = async () => {
     logging.info('Initializing API');
     application.use(express.urlencoded({ extended: true }));
     application.use(express.json());
 
+    logging.log('Connecting to Mongo');
+    try {
+        const connection = await mongoose.connect(MONGO.MONGO_CONNECTION, MONGO.MONGO_OPTIONS);
+        logging.log('Connected to Mongo', connection.version);
+    } catch (error) {
+        logging.log('Unable to Connect to Mongo');
+        logging.error(error);
+    }
+
     logging.info('Logging & Configuration');
+    application.use(declareHandler);
     application.use(loggingHandler);
     application.use(corsHandler);
 
     logging.info('Defining Controller Routing');
-    defineRoutes([MainController], application);
+    defineRoutes([MainController, UserController], application);
 
     logging.info('Router Not Found');
     application.use(routeNotFound);

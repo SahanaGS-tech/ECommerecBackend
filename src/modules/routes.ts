@@ -1,5 +1,5 @@
 import { Express, RequestHandler } from 'express';
-import { RouteHandler } from '../decorators/routes';
+import { RouteHandler } from '../library/routes';
 
 export function defineRoutes(controllers: any, application: Express) {
     for (let i = 0; i < controllers.length; i++) {
