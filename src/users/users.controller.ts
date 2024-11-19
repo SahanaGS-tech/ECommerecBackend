@@ -10,6 +10,7 @@ import { MongoQuery } from '../decorators/mongooseDecorators/query';
 
 const userDeatilsValidation = Joi.object({
     name: Joi.string().required(),
+    role: Joi.string().valid('user', 'admin').required(),
     email: Joi.string().email().required(),
     password: Joi.string().required()
 });
