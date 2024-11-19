@@ -3,7 +3,7 @@ import { Controller } from '../decorators/controller';
 import { Route } from '../decorators/route';
 import Joi from 'joi';
 import { Validate } from '../decorators/vaidate';
-import login from './auth.services';
+import AuthService from './auth.services';
 
 const validateUser = Joi.object({
     email: Joi.string().required().email(),
@@ -15,7 +15,7 @@ class AuthController {
     @Route('post', '/login')
     @Validate(validateUser)
     userLogin(req: Request, res: Response, next: NextFunction) {
-        login(req, res);
+        AuthService.login(req.body.email, req.body.password, res);
     }
 }
 
