@@ -11,9 +11,18 @@ import MainController from './controllers/mainController';
 import mongoose from 'mongoose';
 import UserController from './users/users.controller';
 import { declareHandler } from './middleware/declareHandler';
+import AuthController from './auth/auth.controller';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
+
+declare global {
+    namespace Express {
+        interface Request {
+            user?: any;
+        }
+    }
+}
 
 export const Main = async () => {
     logging.info('Initializing API');
@@ -35,7 +44,7 @@ export const Main = async () => {
     application.use(corsHandler);
 
     logging.info('Defining Controller Routing');
-    defineRoutes([MainController, UserController], application);
+    defineRoutes([MainController, UserController, AuthController], application);
 
     logging.info('Router Not Found');
     application.use(routeNotFound);
