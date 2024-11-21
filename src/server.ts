@@ -16,6 +16,14 @@ import AuthController from './auth/auth.controller';
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
 
+declare global {
+    namespace Express {
+        interface Request {
+            user?: any;
+        }
+    }
+}
+
 export const Main = async () => {
     logging.info('Initializing API');
     application.use(express.urlencoded({ extended: true }));

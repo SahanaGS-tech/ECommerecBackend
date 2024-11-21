@@ -1,5 +1,4 @@
 import { Schema } from 'mongoose';
-
 export const usersSchema = new Schema(
     {
         id: {
@@ -25,6 +24,10 @@ export const usersSchema = new Schema(
         password: {
             type: String,
             required: true
+        },
+        refreshToken: {
+            type: String,
+            unique: true
         }
     },
     {

@@ -12,10 +12,18 @@ const validateUser = Joi.object({
 
 @Controller('/auth')
 class AuthController {
-    @Route('post', '/login')
+    @Route('post', '/login', false)
     @Validate(validateUser)
     userLogin(req: Request, res: Response, next: NextFunction) {
         AuthService.login(req.body.email, req.body.password, res);
+    }
+    @Route('post', '/refresh-token', false)
+    getAccesstokenWithRefreshToken(req: Request, res: Response, next: NextFunction) {
+        AuthService.refreshToken(req, res);
+    }
+    @Route('post', '/logout', true)
+    userLogout(req: Request, res: Response, next: NextFunction) {
+        AuthService.logout(req, res);
     }
 }
 

@@ -14,7 +14,7 @@ const userDeatilsValidation = Joi.object({
 });
 @Controller('/user')
 class UserController {
-    @Route('post', '/register')
+    @Route('post', '/register', false)
     @Validate(userDeatilsValidation)
     @MongoCreate(Users)
     createUser(req: Request, res: Response, next: NextFunction) {

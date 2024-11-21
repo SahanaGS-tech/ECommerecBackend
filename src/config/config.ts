@@ -12,7 +12,17 @@ export const MONGO_PASSWORD = process.env.MONGO_PASSWORD || '';
 export const MONGO_DATABASE = process.env.MONGO_DATABASE || '';
 export const MONGO_URL = process.env.MONGO_URL || '';
 export const MONGO_OPTIONS: mongoose.ConnectOptions = { retryWrites: true, w: 'majority' };
+export const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET || '';
+export const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || '';
+export const JWT_ACCESS_EXPIRY = process.env.JWT_ACCESS_EXPIRY || '';
+export const JWT_REFRESH_EXPIRY = process.env.JWT_REFRESH_EXPIRY || '';
 
+export const JWT = {
+    JWT_ACCESS_SECRET,
+    JWT_REFRESH_SECRET,
+    JWT_ACCESS_EXPIRY,
+    JWT_REFRESH_EXPIRY
+};
 export const MONGO = {
     MONGO_USER,
     MONGO_PASSWORD,
