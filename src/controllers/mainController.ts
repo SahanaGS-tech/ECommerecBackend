@@ -12,8 +12,8 @@ const postHealthCheckValidation = Joi.object({
 class MainController {
     @Route('get', '/healthcheck', true)
     getHealthCheck(req: Request, res: Response, next: NextFunction) {
-        logging.info('HealthCheck Called Succesfully');
-        return res.status(200).json({ hello: 'world' });
+        logging.info(`HealthCheck Called Succesfully`);
+        return res.status(200).json({ hello: `${req.user ? req.user.name : ''}` });
     }
 }
 
