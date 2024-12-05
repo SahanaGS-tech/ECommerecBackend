@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+
 export const usersSchema = new Schema(
     {
         id: {
@@ -26,8 +27,16 @@ export const usersSchema = new Schema(
             required: true
         },
         refreshToken: {
-            type: String,
-            unique: true
+            type: String
+        },
+        wishlist: {
+            type: [String]
+        },
+        cart: {
+            type: [String]
+        },
+        orders: {
+            type: [String]
         }
     },
     {
