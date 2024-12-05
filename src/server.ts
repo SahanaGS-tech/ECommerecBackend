@@ -13,6 +13,7 @@ import UserController from './users/users.controller';
 import { declareHandler } from './middleware/declareHandler';
 import AuthController from './auth/auth.controller';
 import ProductsController from './products/products.controller';
+import WishlistCoontroller from './wishlist/wishlist.controller';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;
@@ -45,7 +46,7 @@ export const Main = async () => {
     application.use(corsHandler);
 
     logging.info('Defining Controller Routing');
-    defineRoutes([MainController, ProductsController, UserController, AuthController], application);
+    defineRoutes([MainController, WishlistCoontroller, ProductsController, UserController, AuthController], application);
 
     logging.info('Router Not Found');
     application.use(routeNotFound);

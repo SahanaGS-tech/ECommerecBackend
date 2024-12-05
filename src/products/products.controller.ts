@@ -1,25 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { Controller } from '../decorators/controller';
 import { Route } from '../decorators/route';
-import Joi from 'joi';
 import { Validate } from '../decorators/vaidate';
 import { Products } from './products.entity';
 import MongoCreate from '../decorators/mongooseDecorators/create';
 import { MongoGetAll } from '../decorators/mongooseDecorators/getAll';
 import { MongoQuery } from '../decorators/mongooseDecorators/query';
+import { productsDeatilsValidation } from './products.validation';
 
-const productsDeatilsValidation = Joi.object({
-    id: Joi.string().required(),
-    productName: Joi.string().required(),
-    primaryCategory: Joi.string().required(),
-    secondaryCategory: Joi.string().required(),
-    gender: Joi.string().required(),
-    articleType: Joi.string().required(),
-    season: Joi.string().required(),
-    usage: Joi.string().required(),
-    primaryColor: Joi.string().required(),
-    imageUrl: Joi.string().required()
-});
 @Controller('/products')
 class ProductsController {
     @Route('post', '/add-products', true)

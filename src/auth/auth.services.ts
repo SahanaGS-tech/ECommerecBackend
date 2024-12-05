@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { Users } from './../users/users.entity';
 import { JWT } from '../config/config';
@@ -61,6 +61,11 @@ class AuthService {
         } catch (error) {
             res.status(500).json({ message: 'Server error', error });
         }
+    }
+    async getUserByAccessToken(req: Request, res: Response, next: NextFunction) {
+        const accessToken = req.headers.authorization?.replace('Bearer ', '') || '';
+        const decoded = jwt.verify(accessToken, JWT.JWT_ACCESS_SECRET!) as { id: string };
+        return await Users.findOne({ _id: decoded.id });
     }
 }
 

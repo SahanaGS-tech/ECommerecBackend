@@ -1,12 +1,7 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 export const usersSchema = new Schema(
     {
-        id: {
-            type: String,
-            required: true,
-            unique: true
-        },
         name: {
             type: String,
             required: true
@@ -30,13 +25,13 @@ export const usersSchema = new Schema(
             type: String
         },
         wishlist: {
-            type: String
+            type: mongoose.Schema.Types.ObjectId
         },
         cart: {
-            type: String
+            type: mongoose.Schema.Types.ObjectId
         },
         orders: {
-            type: [String]
+            type: [mongoose.Schema.Types.ObjectId]
         }
     },
     {
