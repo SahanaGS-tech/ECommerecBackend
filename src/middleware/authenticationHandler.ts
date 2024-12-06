@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { JWT } from '../config/config';
-import { Users } from '../users/users.entity';
+import { Users } from '../features/users/users.entity';
 
 export const authenticationHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const token = req.headers.authorization?.split(' ')[1];

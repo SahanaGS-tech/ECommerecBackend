@@ -1,11 +1,11 @@
-import { Controller } from '../decorators/controller';
-import { Route } from '../decorators/route';
+import { Controller } from '../../decorators/controller';
+import { Route } from '../../decorators/route';
 import { Request, Response, NextFunction } from 'express';
 import WishlistServices from './wishlist.services';
 
 import { wishlistValidation } from './wishlist.validation';
-import { Validate } from '../decorators/vaidate';
-import { MongoGet } from '../decorators/mongooseDecorators/get';
+import { Validate } from '../../decorators/vaidate';
+import { MongoGet } from '../../decorators/mongooseDecorators/get';
 import { Wishlist } from './wishlist.entity';
 
 @Controller('/wishlist')

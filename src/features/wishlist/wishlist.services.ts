@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import AuthService from './../auth/auth.services';
-import UsersServices from './../users/users.services';
+import AuthService from '../auth/auth.services';
+import UsersServices from '../users/users.services';
 import { Wishlist } from './wishlist.entity';
 import { v4 as uuidv4 } from 'uuid';
 import mongoose, { ObjectId } from 'mongoose';

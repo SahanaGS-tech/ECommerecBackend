@@ -9,11 +9,11 @@ import 'reflect-metadata';
 import { defineRoutes } from './modules/routes';
 import MainController from './controllers/mainController';
 import mongoose from 'mongoose';
-import UserController from './users/users.controller';
+import UserController from './features/users/users.controller';
 import { declareHandler } from './middleware/declareHandler';
-import AuthController from './auth/auth.controller';
-import ProductsController from './products/products.controller';
-import WishlistCoontroller from './wishlist/wishlist.controller';
+import AuthController from './features/auth/auth.controller';
+import ProductsController from './features/products/products.controller';
+import WishlistCoontroller from './features/wishlist/wishlist.controller';
 
 export const application = express();
 export let httpServer: ReturnType<typeof http.createServer>;

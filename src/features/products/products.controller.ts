@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import { Controller } from '../decorators/controller';
-import { Route } from '../decorators/route';
-import { Validate } from '../decorators/vaidate';
+import { Controller } from '../../decorators/controller';
+import { Route } from '../../decorators/route';
+import { Validate } from '../../decorators/vaidate';
 import { Products } from './products.entity';
-import MongoCreate from '../decorators/mongooseDecorators/create';
-import { MongoGetAll } from '../decorators/mongooseDecorators/getAll';
-import { MongoQuery } from '../decorators/mongooseDecorators/query';
+import MongoCreate from '../../decorators/mongooseDecorators/create';
+import { MongoGetAll } from '../../decorators/mongooseDecorators/getAll';
+import { MongoQuery } from '../../decorators/mongooseDecorators/query';
 import { productsDeatilsValidation } from './products.validation';
 
 @Controller('/products')

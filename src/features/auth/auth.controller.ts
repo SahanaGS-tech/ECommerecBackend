@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { Controller } from '../decorators/controller';
-import { Route } from '../decorators/route';
+import { Controller } from '../../decorators/controller';
+import { Route } from '../../decorators/route';
 import Joi from 'joi';
-import { Validate } from '../decorators/vaidate';
+import { Validate } from '../../decorators/vaidate';
 import AuthService from './auth.services';
 
 const validateUser = Joi.object({

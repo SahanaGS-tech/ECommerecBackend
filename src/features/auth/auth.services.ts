@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { Users } from './../users/users.entity';
-import { JWT } from '../config/config';
+import { Users } from '../users/users.entity';
+import { JWT } from '../../config/config';
 
 class AuthService {
     async login(email: string, password: string, res: Response) {

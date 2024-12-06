@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { Controller } from '../decorators/controller';
-import { Route } from '../decorators/route';
+import { Controller } from '../../decorators/controller';
+import { Route } from '../../decorators/route';
 import Joi from 'joi';
-import { Validate } from '../decorators/vaidate';
+import { Validate } from '../../decorators/vaidate';
 import { Users } from './users.entity';
-import MongoCreate from '../decorators/mongooseDecorators/create';
+import MongoCreate from '../../decorators/mongooseDecorators/create';
 
 const userDeatilsValidation = Joi.object({
     name: Joi.string().required(),
