@@ -14,15 +14,23 @@ class ProductsController {
     @Validate(productsDeatilsValidation)
     @MongoCreate(Products)
     addProducts(req: Request, res: Response, next: NextFunction) {
-        logging.info('Product added successfully');
-        return res.status(201).json(req.mongoCreate);
+        try {
+            logging.info('Product added successfully');
+            return res.status(201).json(req.mongoCreate);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
 
     @Route('get', '/get-products', true)
     @MongoGetAll(Products)
     getProducts(req: Request, res: Response, next: NextFunction) {
-        logging.info('Products fetched successfully');
-        return res.status(200).json(req.mongoGetAll);
+        try {
+            logging.info('Products fetched successfully');
+            return res.status(200).json(req.mongoGetAll);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
     @Route('post', '/get-products-by-value', true)
     @MongoQuery(Products)

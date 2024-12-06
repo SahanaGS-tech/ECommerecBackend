@@ -13,7 +13,7 @@ export function MongoCreate(model: Model<any>) {
                     req.body.password = await bcrypt.hash(req.body.password, saltRounds);
                 }
                 const document = await new model({
-                    id: uuidv4(),
+                    _id: uuidv4(),
                     ...req.body
                 });
                 await document.save();

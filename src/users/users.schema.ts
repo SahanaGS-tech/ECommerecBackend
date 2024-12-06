@@ -2,6 +2,10 @@ import mongoose, { Schema } from 'mongoose';
 
 export const usersSchema = new Schema(
     {
+        _id: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true
@@ -25,13 +29,13 @@ export const usersSchema = new Schema(
             type: String
         },
         wishlist: {
-            type: mongoose.Schema.Types.ObjectId
+            type: String
         },
         cart: {
-            type: mongoose.Schema.Types.ObjectId
+            type: String
         },
         orders: {
-            type: [mongoose.Schema.Types.ObjectId]
+            type: [String]
         }
     },
     {

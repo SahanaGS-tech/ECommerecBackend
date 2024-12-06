@@ -18,8 +18,12 @@ class UserController {
     @Validate(userDeatilsValidation)
     @MongoCreate(Users)
     createUser(req: Request, res: Response, next: NextFunction) {
-        logging.info('User Created Successfully');
-        return res.status(201).json(req.mongoCreate);
+        try {
+            logging.info('User Created Successfully');
+            return res.status(201).json(req.mongoCreate);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
 }
 

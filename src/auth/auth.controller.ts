@@ -15,15 +15,28 @@ class AuthController {
     @Route('post', '/login', false)
     @Validate(validateUser)
     userLogin(req: Request, res: Response, next: NextFunction) {
-        AuthService.login(req.body.email, req.body.password, res);
+        try {
+            logging.info('Login Successfully');
+            AuthService.login(req.body.email, req.body.password, res);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
     @Route('post', '/refresh-token', false)
     getAccesstokenWithRefreshToken(req: Request, res: Response, next: NextFunction) {
-        AuthService.refreshToken(req, res);
+        try {
+            AuthService.refreshToken(req, res);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
     @Route('post', '/logout', true)
     userLogout(req: Request, res: Response, next: NextFunction) {
-        AuthService.logout(req, res);
+        try {
+            AuthService.logout(req, res);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
 }
 
