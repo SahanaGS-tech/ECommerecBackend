@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import AuthService from './../auth/auth.services';
 import { Carts } from './carts.entity';
 import { v4 as uuidv4 } from 'uuid';
+import UsersServices from '../users/users.services';
 
 class CartsServices {
     async addProductsToCart(req: Request, res: Response, next: NextFunction) {
@@ -12,6 +13,7 @@ class CartsServices {
             const isUserExist = await Carts.find({ userId: userId });
             const cartId = isUserExist[0]?._id.toString() || '';
             const cart = await this.addCartItems(cartId, userId, cartItems);
+            UsersServices.addCartIdToUser(userId, cartId);
             return cart;
         } catch (error) {
             console.error('Error adding product to cart:', error);

@@ -29,10 +29,12 @@ export const usersSchema = new Schema(
             type: String
         },
         wishlist: {
-            type: String
+            type: String,
+            default: null
         },
         cart: {
-            type: String
+            type: String,
+            default: null
         },
         orders: {
             type: [String]
