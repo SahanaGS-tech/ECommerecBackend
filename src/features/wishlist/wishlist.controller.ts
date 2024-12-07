@@ -14,14 +14,15 @@ class WishlistCoontroller {
     @Route('post', '/add-to-wishlist', true)
     async addProductsToWishlist(req: Request, res: Response, next: NextFunction) {
         try {
-            WishlistServices.addProductToWishlist(req, res, next);
-            return res.status(201).json('Added to wishlist');
+            const document = await WishlistServices.addProductToWishlist(req, res, next);
+            console.log('document', document);
+            return res.status(201).json(document);
         } catch (error) {
             return res.status(500).json({ error: 'Internal server error' });
         }
     }
 
-    @Route('post', '/get-wishlisted-products/:id', true)
+    @Route('get', '/get-wishlisted-products/:id', true)
     @MongoGet(Wishlist)
     async getProductsFromWishlist(req: Request, res: Response, next: NextFunction) {
         try {
