@@ -6,6 +6,7 @@ import { cartDetailsValidator } from './carts.validation';
 import cartsServices from './carts.services';
 import { Carts } from './carts.entity';
 import { MongoGet } from '../../decorators/mongooseDecorators/get';
+import { MongoDelete } from '../../decorators/mongooseDecorators/delete';
 
 @Controller('/carts')
 class CartsController {
@@ -22,7 +23,7 @@ class CartsController {
     @Route('patch', '/update-cart', true)
     async updateCart(req: Request, res: Response, next: NextFunction) {
         try {
-            const document = cartsServices.updateProductsToCart(req, res, next);
+            const document = await cartsServices.updateProductsToCart(req, res, next);
             return res.status(200).json(document);
         } catch (error) {
             return res.status(500).json('Internal Server Error');
@@ -33,6 +34,15 @@ class CartsController {
     async getProductsFromCarts(req: Request, res: Response, next: NextFunction) {
         try {
             return res.status(200).json(req.mongoGet);
+        } catch (error) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+    @Route('delete', '/delete/:id', true)
+    @MongoDelete(Carts)
+    deleteCart(req: Request, res: Response, next: NextFunction) {
+        try {
+            return res.status(200).json(`Deleted cart successfully with cartID:${req.params.id}`);
         } catch (error) {
             return res.status(500).json({ error: 'Internal server error' });
         }
