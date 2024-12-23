@@ -1,4 +1,6 @@
 import { Schema } from 'mongoose';
+import { Sellers } from '../sellers/sellers.entity';
+import { Reviews } from '../reviews/reviews.entity';
 
 export const productsSchema = new Schema({
     _id: {
@@ -8,6 +10,11 @@ export const productsSchema = new Schema({
     productName: {
         type: String,
         required: true
+    },
+    sellerDetails: {
+        type: String,
+        require: true,
+        ref: Sellers
     },
     primaryCategory: {
         type: String,
@@ -19,6 +26,14 @@ export const productsSchema = new Schema({
     },
     gender: {
         type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    stock: {
+        type: Number,
         required: true
     },
     articleType: {
@@ -40,5 +55,9 @@ export const productsSchema = new Schema({
     imageUrl: {
         type: String,
         required: true
+    },
+    customerReview: {
+        type: [String],
+        ref: Reviews
     }
 });

@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import { Products } from '../products/products.entity';
 
 export const wishlistSchema = new mongoose.Schema(
@@ -15,7 +15,7 @@ export const wishlistSchema = new mongoose.Schema(
         products: [
             {
                 type: String,
-                ref: 'products',
+                ref: Products,
                 unique: true,
                 required: true
             }
