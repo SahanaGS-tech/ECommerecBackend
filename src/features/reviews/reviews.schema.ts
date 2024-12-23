@@ -4,19 +4,19 @@ export const reviewsSchema = new Schema(
     {
         _id: {
             type: String,
-            require: true
+            required: true
         },
         customerName: {
             type: String,
-            require: true
+            required: true
         },
         customerRating: {
             type: Number,
-            require: true
+            required: true
         },
         customerComments: {
             type: String,
-            require: true
+            required: true
         },
         imageUrl: {
             type: [String]

@@ -4,26 +4,26 @@ export const usersSchema = new Schema(
     {
         _id: {
             type: String,
-            require: true
+            required: true
         },
         name: {
             type: String,
-            require: true
+            required: true
         },
         role: {
             type: String,
-            require: true,
+            required: true,
             enum: ['user', 'admin'],
             default: 'user'
         },
         email: {
             type: String,
-            require: true,
+            required: true,
             unique: true
         },
         password: {
             type: String,
-            require: true
+            required: true
         },
         refreshToken: {
             type: String

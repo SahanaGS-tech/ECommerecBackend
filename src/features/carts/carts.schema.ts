@@ -4,11 +4,11 @@ export const cartSchema = new Schema({
     _id: {
         type: String,
         unique: true,
-        require: true
+        required: true
     },
     userId: {
         type: String,
-        require: true,
+        required: true,
         ref: 'users',
         unique: true
     },
@@ -17,11 +17,11 @@ export const cartSchema = new Schema({
             productId: {
                 type: String,
                 ref: 'products',
-                require: true
+                required: true
             },
             quantity: {
                 type: Number,
-                require: true
+                required: true
             }
         }
     ]

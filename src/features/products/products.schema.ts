@@ -13,7 +13,7 @@ export const productsSchema = new Schema({
     },
     sellerDetails: {
         type: String,
-        require: true,
+        required: true,
         ref: Sellers
     },
     primaryCategory: {
